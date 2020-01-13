@@ -1,0 +1,16 @@
+type Project @model {
+  id: ID!
+  name: String!
+  posts: [Post] @connection(name: "DevlogPosts")
+}
+type Post @model {
+  id: ID!
+  title: String!
+  project: Project @connection(name: "DevlogPosts")
+  comments: [Comment] @connection(name: "PostComments")
+}
+type Comment @model {
+  id: ID!
+  content: String
+  post: Post @connection(name: "PostComments")
+}
